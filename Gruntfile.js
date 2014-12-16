@@ -35,16 +35,6 @@ module.exports = function(grunt) {
           urls: ['www.twitter.com']
         }
       }
-      // ,
-      // custom_options: {
-      //   options: {
-      //     separator: ': ',
-      //     punctuation: ' !!!'
-      //   },
-      //   files: {
-      //     'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
-      //   }
-      // }
     },
 
     // Unit tests.
