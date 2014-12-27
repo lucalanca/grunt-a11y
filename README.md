@@ -1,4 +1,4 @@
-# grunt-a11y
+# grunt-a11y  [![Build Status](https://travis-ci.org/lucalanca/grunt-a11y.svg?branch=master)](https://travis-ci.org/lucalanca/grunt-a11y) [![devDependency Status](https://david-dm.org/lucalanca/grunt-a11y/dev-status.svg)](https://david-dm.org/lucalanca/grunt-a11y#info=devDependencies)  [![Dependency Status](https://david-dm.org/lucalanca/grunt-a11y.svg)](https://david-dm.org/lucalanca/grunt-a11y)
 
 > Grunt wrapper for a11y
 
