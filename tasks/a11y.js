@@ -10,7 +10,6 @@
 
 var a11y       = require('a11y');
 var chalk      = require('chalk');
-var _          = require('lodash');
 var indent     = require('indent-string');
 var logSymbols = require('log-symbols');
 var Q          = require('q');
