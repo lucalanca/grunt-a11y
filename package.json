@@ -40,7 +40,7 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "a11y": "^0.2.0",
+    "a11y": "^0.2.3",
     "chalk": "^0.5.1",
     "indent-string": "^1.2.0",
     "log-symbols": "^1.0.1",
