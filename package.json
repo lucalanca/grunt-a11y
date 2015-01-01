@@ -1,7 +1,7 @@
 {
   "name": "grunt-a11y",
   "description": "Grunt wrapper for a11y",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/lucalanca/grunt-a11y",
   "author": {
     "name": "Joao Figueiredo",
@@ -43,6 +43,7 @@
     "a11y": "^0.2.0",
     "chalk": "^0.5.1",
     "indent-string": "^1.2.0",
-    "log-symbols": "^1.0.1"
+    "log-symbols": "^1.0.1",
+    "q": "^1.1.2"
   }
 }

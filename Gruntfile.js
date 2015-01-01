@@ -34,6 +34,17 @@ module.exports = function(grunt) {
         options: {
           urls: ['www.twitter.com']
         }
+      },
+      simulate_fail_warn: {
+        options: {
+          urls: ['www.twitter.com']
+        }
+      },
+      simulate_fail_fatal: {
+        options: {
+          urls: ['www.twitter.com'],
+          failOnError: true
+        }
       }
     },
 
