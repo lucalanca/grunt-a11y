@@ -52,4 +52,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 0.1.1 Added `failOnError` option (See [#2](https://github.com/lucalanca/grunt-a11y/issues/2))
+
 0.1.0 First release just wrapping a11y
