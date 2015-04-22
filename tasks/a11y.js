@@ -14,7 +14,6 @@ var indent     = require('indent-string');
 var logSymbols = require('log-symbols');
 var Q          = require('q');
 
-
 var fail  = chalk.bold.red;
 var log   = chalk.blue;
 var pass  = chalk.green;
