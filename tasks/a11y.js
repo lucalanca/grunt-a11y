@@ -10,11 +10,9 @@
 
 var a11y       = require('a11y');
 var chalk      = require('chalk');
-var _          = require('lodash');
 var indent     = require('indent-string');
 var logSymbols = require('log-symbols');
 var Q          = require('q');
-
 
 var fail  = chalk.bold.red;
 var log   = chalk.blue;
@@ -44,7 +42,7 @@ module.exports = function(grunt) {
           if (options.failOnError) {
             grunt.fail.fatal('FATAL: Audit failed for ' + audit.url);
           } else {
-            grunt.log.error('WARN: Audit failed for ' + audit.url)
+            grunt.log.error('WARN: Audit failed for ' + audit.url);
           }
         }
       }).catch(function (error) {

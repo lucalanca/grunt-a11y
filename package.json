@@ -40,10 +40,9 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "a11y": "^0.2.3",
-    "chalk": "^0.5.1",
+    "a11y": "^0.3.0",
+    "chalk": "^1.0.0",
     "indent-string": "^1.2.0",
-    "lodash": "^2.4.1",
     "log-symbols": "^1.0.1",
     "q": "^1.1.2"
   }
