@@ -46,6 +46,12 @@ Default value: `false`
 
 If set to true, the grunt task fails when there is an accessibility error in one of the audits.
 
+#### options.viewportSize
+Type: `String`
+Default value: `1024x768`
+
+Sets the viewport size
+
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).

@@ -30,11 +30,12 @@ module.exports = function(grunt) {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       urls: [],
-      failOnError: false
+      failOnError: false,
+      viewportSize: '1024x768'
     });
 
     var a11yPromises = options.urls.map(function (url) {
-      return a11yPromise(url);
+      return a11yPromise(url, options.viewportSize);
     });
 
     a11yPromises.forEach(function (f) {
@@ -92,11 +93,12 @@ module.exports = function(grunt) {
   /**
    * A promise-based wrapper on a11y.
    * @param  {String}  url
+   * @param  {String}  viewportSize
    * @return {Promise}
    */
-  function a11yPromise (url) {
+  function a11yPromise (url, viewportSize) {
     var deferred = Q.defer();
-    a11y(url, function (err, reports) {
+    a11y(url, {viewportSize: viewportSize}, function (err, reports) {
       if (err) {
         deferred.reject(new Error(err));
       } else {
