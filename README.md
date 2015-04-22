@@ -25,10 +25,12 @@ In your project's Gruntfile, add a section named `a11y` to the data object passe
 ```js
 grunt.initConfig({
   a11y: {
-    options: {
-      urls: ['www.twitter.com', 'www.google.com']
+    dev: {
+      options: {
+        urls: ['www.twitter.com', 'www.google.com']
+      }
     }
-  },
+  }
 });
 ```
 
