@@ -59,6 +59,9 @@ Sets the viewport size
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+
+0.1.2 Added `viewportSize` option (See [#10](https://github.com/lucalanca/grunt-a11y/issues/10))
+
 0.1.1 Added `failOnError` option (See [#2](https://github.com/lucalanca/grunt-a11y/issues/2))
 
 0.1.0 First release just wrapping a11y
