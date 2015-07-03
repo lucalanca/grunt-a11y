@@ -35,6 +35,12 @@ module.exports = function(grunt) {
           urls: ['www.twitter.com']
         }
       },
+      setViewportSize: {
+        options: {
+          urls: ['www.twitter.com'],
+          viewportSize: '360x640'
+        }
+      },
       simulate_fail_warn: {
         options: {
           urls: ['www.twitter.com']
