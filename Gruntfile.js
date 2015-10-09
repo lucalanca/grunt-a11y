@@ -51,6 +51,16 @@ module.exports = function(grunt) {
           urls: ['www.twitter.com'],
           failOnError: true
         }
+      },
+      no_glob_pattern: {
+        options: {
+          urls: ['test/pages/test1.html']
+        }
+      },
+      glob_pattern: {
+        options: {
+          urls: ['test/pages/**/*.html']
+        }
       }
     },
 

@@ -8,11 +8,13 @@
 
 'use strict';
 
-var a11y       = require('a11y');
-var chalk      = require('chalk');
-var indent     = require('indent-string');
-var logSymbols = require('log-symbols');
-var Q          = require('q');
+var a11y        = require('a11y');
+var chalk       = require('chalk');
+var indent      = require('indent-string');
+var logSymbols  = require('log-symbols');
+var Q           = require('q');
+var globby      = require('globby');
+var protocolify = require('protocolify');
 
 var fail  = chalk.bold.red;
 var log   = chalk.blue;
@@ -32,7 +34,10 @@ module.exports = function(grunt) {
       viewportSize: '1024x768'
     });
 
-    var a11yPromises = options.urls.map(function (url) {
+    var urls = globby.sync(options.urls, {
+      nonull: true
+    }).map(protocolify);
+    var a11yPromises = urls.map(function (url) {
       return a11yPromise(url, options.viewportSize);
     });
 
