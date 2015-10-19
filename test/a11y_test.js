@@ -1,6 +1,12 @@
 'use strict';
 
 var grunt = require('grunt');
+var path = require('path');
+var exec = require('child_process').exec;
+var execOptions = {
+    cwd: path.join(__dirname, '..')
+};
+
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -46,4 +52,31 @@ exports.a11y = {
     test.equal(1, 1, 'as');
     test.done();
   },
+  no_glob_pattern: function(test) {
+    test.expect(1);
+    exec('grunt a11y:no_glob_pattern', execOptions, function(error, stdout) {
+      test.equal(
+        stdout.indexOf('Done, without errors') > -1,
+        true,
+        'Should support ordinary urls'
+      );
+      test.done();
+    });
+  },
+  glob_pattern: function(test) {
+    test.expect(2);
+    exec('grunt a11y:glob_pattern', execOptions, function(error, stdout) {
+      test.equal(
+        stdout.indexOf('Done, without errors') > -1,
+        true,
+        'Should support glob patterns as urls'
+      );
+      test.equal(
+        stdout.split('Report for').length == 3,
+        true,
+        'Should discover two files'
+      );
+      test.done();
+    });
+  }
 };
