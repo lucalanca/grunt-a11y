@@ -27,7 +27,7 @@ grunt.initConfig({
   a11y: {
     dev: {
       options: {
-        urls: ['www.twitter.com', 'www.google.com']
+        urls: ['www.twitter.com', 'www.google.com', 'dist/**/*.html']
       }
     }
   }
@@ -40,7 +40,7 @@ grunt.initConfig({
 Type: `Array`
 Default value: `[]`
 
-An Array of strings representing the url's to process.
+An Array of strings representing the url's to process. Supports globbing.
 
 #### options.failOnError
 Type: `Boolean`
@@ -64,6 +64,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 - [jrcryer](https://github.com/jrcryer)
 
 ## Release History
+
+0.1.3 Added globbing possibility to `urls`option (See [#12](https://github.com/lucalanca/grunt-a11y/issues/12)) Thanks to [@peterhaldbaek](https://github.com/peterhaldbaek)
 
 0.1.2 Added `viewportSize` option (See [#10](https://github.com/lucalanca/grunt-a11y/issues/10))
 
