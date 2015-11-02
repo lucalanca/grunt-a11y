@@ -65,6 +65,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+0.1.4 Makes `protocolify` and `globby` part of dependencies. [#13](https://github.com/lucalanca/grunt-a11y/pull/13)) Thanks to [@shortdiv](https://github.com/shortdiv)
+
 0.1.3 Added globbing possibility to `urls`option (See [#12](https://github.com/lucalanca/grunt-a11y/issues/12)) Thanks to [@peterhaldbaek](https://github.com/peterhaldbaek)
 
 0.1.2 Added `viewportSize` option (See [#10](https://github.com/lucalanca/grunt-a11y/issues/10))
