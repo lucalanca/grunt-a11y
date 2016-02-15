@@ -29,8 +29,8 @@
   },
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-clean": "^0.7.0",
+    "grunt-contrib-jshint": "^0.12.0",
     "grunt-contrib-nodeunit": "^0.4.1"
   },
   "peerDependencies": {
@@ -40,10 +40,10 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "a11y": "^0.3.0",
+    "a11y": "^0.4.0",
     "chalk": "^1.0.0",
-    "globby": "^3.0.1",
-    "indent-string": "^1.2.0",
+    "globby": "^4.0.0",
+    "indent-string": "^2.1.0",
     "log-symbols": "^1.0.1",
     "protocolify": "^1.0.2",
     "q": "^1.1.2"
