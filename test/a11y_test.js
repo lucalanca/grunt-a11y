@@ -72,7 +72,7 @@ exports.a11y = {
         'Should support glob patterns as urls'
       );
       test.equal(
-        stdout.split('Report for').length == 3,
+        stdout.split('Report for').length === 3,
         true,
         'Should discover two files'
       );
