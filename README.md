@@ -42,6 +42,12 @@ Default value: `[]`
 
 An Array of strings representing the url's to process. Supports globbing.
 
+#### options.junitDirectory
+Type: `String`
+Default value: `false`
+
+If set to other than false, JUnit reports will be generated in this directory.
+
 #### options.failOnError
 Type: `Boolean`
 Default value: `false`

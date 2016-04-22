@@ -9,6 +9,7 @@
 'use strict';
 
 var fs          = require('fs');
+var path        = require('path');
 var a11y        = require('a11y');
 var chalk       = require('chalk');
 var indent      = require('indent-string');
@@ -32,6 +33,7 @@ module.exports = function(grunt) {
     var options = this.options({
       urls: [],
       failOnError: false,
+      junitDirectory: false,
       viewportSize: '1024x768'
     });
 
@@ -45,7 +47,7 @@ module.exports = function(grunt) {
     a11yPromises.forEach(function (f) {
       f.then(function (audit) {
         var valid = logReports(audit.url, audit.reports);
-        writeJUnitReport(audit.url, audit.reports);
+        writeJUnitReport(options.junitDirectory, audit.url, audit.reports);
         if (!valid) {
           if (options.failOnError) {
             grunt.fail.fatal('FATAL: Audit failed for ' + audit.url);
@@ -65,8 +67,18 @@ module.exports = function(grunt) {
     Q.all(a11yPromises).then(done);
   });
 
-  function writeJUnitReport(url, report) {
-    fs.writeFile('/tmp/' + url + '.xml', report.junit);
+	/**
+   * Utility function that writes a JUnit report if directory is specified
+   * @param {String} directory directory in which to store the JUnit reports
+   * @param {String} url       url
+   * @param {String} report    report
+   */
+  function writeJUnitReport(directory, url, report) {
+    if(directory) {
+      var fileName = url.replace(new RegExp('[/\\:]', 'g'), '_') + '.xml';
+      var file = path.join(directory, fileName);
+      fs.writeFile(file, report.junit);
+    }
   }
 
   /**
