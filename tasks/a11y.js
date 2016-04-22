@@ -67,7 +67,7 @@ module.exports = function(grunt) {
     Q.all(a11yPromises).then(done);
   });
 
-	/**
+  /**
    * Utility function that writes a JUnit report if directory is specified
    * @param {String} directory directory in which to store the JUnit reports
    * @param {String} url       url
@@ -75,8 +75,13 @@ module.exports = function(grunt) {
    */
   function writeJUnitReport(directory, url, report) {
     if(directory) {
-      var fileName = url.replace(new RegExp('[/\\:]', 'g'), '_') + '.xml';
+      var fileName = url;
+      if (fileName.search(/^file:\/\/|^\\/) != -1){
+        fileName = path.basename(fileName);
+      }
+      fileName = fileName.replace(new RegExp('[/\\:]', 'g'), '_') + '.xml';
       var file = path.join(directory, fileName);
+      grunt.log.writeln('Writing JUnit report to %s', file);
       fs.writeFile(file, report.junit);
     }
   }
@@ -95,14 +100,14 @@ module.exports = function(grunt) {
 
     grunt.log.writeln(chalk.underline(chalk.cyan('\nReport for ' + url + '\n')));
     reports.audit.forEach(function (el) {
-        if (el.result === 'PASS') {
-            passes += logSymbols.success + ' ' + el.heading + '\n';
-        }
+      if (el.result === 'PASS') {
+        passes += logSymbols.success + ' ' + el.heading + '\n';
+      }
 
-        if (el.result === 'FAIL') {
-            failures += logSymbols.error + ' ' + el.heading + '\n';
-            failures += el.elements + '\n\n';
-        }
+      if (el.result === 'FAIL') {
+        failures += logSymbols.error + ' ' + el.heading + '\n';
+        failures += el.elements + '\n\n';
+      }
     });
 
     grunt.log.writeln(indent(failures, ' ', 2));
