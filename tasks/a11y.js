@@ -8,6 +8,7 @@
 
 'use strict';
 
+var fs          = require('fs');
 var a11y        = require('a11y');
 var chalk       = require('chalk');
 var indent      = require('indent-string');
@@ -44,6 +45,7 @@ module.exports = function(grunt) {
     a11yPromises.forEach(function (f) {
       f.then(function (audit) {
         var valid = logReports(audit.url, audit.reports);
+        writeJUnitReport(audit.url, audit.reports);
         if (!valid) {
           if (options.failOnError) {
             grunt.fail.fatal('FATAL: Audit failed for ' + audit.url);
@@ -62,6 +64,10 @@ module.exports = function(grunt) {
 
     Q.all(a11yPromises).then(done);
   });
+
+  function writeJUnitReport(url, report) {
+    fs.writeFile('/tmp/' + url + '.xml', report.junit);
+  }
 
   /**
    * Utility function that logs an audit in the console and
