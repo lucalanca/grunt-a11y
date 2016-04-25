@@ -74,10 +74,12 @@ module.exports = function(grunt) {
    * @param {String} report    report
    */
   function writeJUnitReport(directory, url, report) {
-    if(directory) {
+    if (directory) {
       var fileName = url;
-      if (fileName.search(/^file:\/\/|^\\/) != -1){
-        fileName = path.basename(fileName);
+      var isOnFileSystem = fileName.search(/^file:\/\/|^\\/) != -1;
+      if (isOnFileSystem) {
+        var pathToFile = path.resolve(fileName.replace(/^file:\/\/|^\\/, ''));
+        fileName = path.relative(process.cwd(), pathToFile);
       }
       fileName = fileName.replace(new RegExp('[/\\:]', 'g'), '_') + '.xml';
       var file = path.join(directory, fileName);
