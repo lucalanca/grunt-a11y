@@ -76,7 +76,7 @@ module.exports = function(grunt) {
   function writeJUnitReport(directory, url, report) {
     if (directory) {
       var fileName = url;
-      var isOnFileSystem = fileName.search(/^file:\/\/|^\\/) != -1;
+      var isOnFileSystem = fileName.search(/^file:\/\/|^\\/) !== -1;
       if (isOnFileSystem) {
         var pathToFile = path.resolve(fileName.replace(/^file:\/\/|^\\/, ''));
         fileName = path.relative(process.cwd(), pathToFile);
