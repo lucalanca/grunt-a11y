@@ -40,7 +40,7 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "a11y": "^0.3.0",
+    "a11y": "marob/a11y",
     "chalk": "^1.0.0",
     "globby": "^3.0.1",
     "indent-string": "^1.2.0",
