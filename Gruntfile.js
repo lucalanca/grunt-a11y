@@ -32,23 +32,23 @@ module.exports = function(grunt) {
     a11y: {
       default_options: {
         options: {
-          urls: ['www.twitter.com']
+          urls: ['www.google.com']
         }
       },
       setViewportSize: {
         options: {
-          urls: ['www.twitter.com'],
+          urls: ['www.google.com'],
           viewportSize: '360x640'
         }
       },
       simulate_fail_warn: {
         options: {
-          urls: ['www.twitter.com']
+          urls: ['www.google.com']
         }
       },
       simulate_fail_fatal: {
         options: {
-          urls: ['www.twitter.com'],
+          urls: ['www.google.com'],
           failOnError: true
         }
       },
