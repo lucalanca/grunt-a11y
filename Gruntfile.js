@@ -32,7 +32,8 @@ module.exports = function(grunt) {
     a11y: {
       default_options: {
         options: {
-          urls: ['www.google.com']
+          urls: ['www.google.com', 'github.com', 'http://references.modernisation.gouv.fr/rgaa-accessibilite', 'test/pages/test1.html'],
+          junitDirectory: 'junit/'
         }
       },
       setViewportSize: {

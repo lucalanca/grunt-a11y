@@ -8,6 +8,8 @@
 
 'use strict';
 
+var fs          = require('fs');
+var path        = require('path');
 var a11y        = require('a11y');
 var chalk       = require('chalk');
 var indent      = require('indent-string');
@@ -29,12 +31,13 @@ module.exports = function(grunt) {
    * @return {Promise}
    */
   function a11yPromise (url, viewportSize) {
+    var startTimestamp = Date.now();
     var deferred = Q.defer();
     a11y(url, {viewportSize: viewportSize}, function (err, reports) {
       if (err) {
         deferred.reject(new Error(err));
       } else {
-        deferred.resolve({url: url, reports: reports});
+        deferred.resolve({url: url, reports: reports, start: startTimestamp, end: Date.now()});
       }
     });
     return deferred.promise;
@@ -79,6 +82,7 @@ module.exports = function(grunt) {
     var options = this.options({
       urls: [],
       failOnError: false,
+      junitDirectory: null,
       viewportSize: '1024x768'
     });
 
@@ -92,6 +96,7 @@ module.exports = function(grunt) {
     a11yPromises.forEach(function (f) {
       f.then(function (audit) {
         var valid = logReports(audit.url, audit.reports);
+        generateJUnitReport(options.junitDirectory, audit);
         if (!valid) {
           if (options.failOnError) {
             grunt.fail.fatal('FATAL: Audit failed for ' + audit.url);
@@ -110,5 +115,33 @@ module.exports = function(grunt) {
 
     Q.all(a11yPromises).then(done);
   });
+
+  /**
+   * Utility function that writes a JUnit report if directory is specified
+   * @param {String} directory - directory in which to store the JUnit reports
+   * @param {Object} auditParam - audit
+   */
+  function generateJUnitReport(directory, auditParam) {
+    if (directory) {
+      var mkdirp = require('mkdirp');
+      var a11yJunitReporter = require('a11y-junit-reporter');
+
+      var url = auditParam.url;
+      var audit = auditParam.reports.audit;
+      var start = auditParam.start;
+      var end = auditParam.end;
+
+      var duration = end - start;
+      var junitReport = a11yJunitReporter.generateJUnitReport(url, audit, end, duration);
+
+      var fileName = a11yJunitReporter
+              .toRelativePath(url)
+              .replace(new RegExp('[/\\:]', 'g'), '_') + '.xml';
+      var file = path.join(directory, fileName);
+      grunt.log.writeln('Writing JUnit report to %s', file);
+      mkdirp.sync(path.dirname(file));
+      fs.writeFile(file, junitReport);
+    }
+  }
 
 };
