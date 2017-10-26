@@ -54,6 +54,12 @@ Default value: `1024x768`
 
 Sets the viewport size
 
+#### options.vebose
+Type: `Boolean`
+Default value: `false`
+
+Sets the viewport size
+
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
@@ -64,6 +70,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 - [jrcryer](https://github.com/jrcryer)
 
 ## Release History
+
+0.1.5 Adds `verbose` flag. [#19](https://github.com/lucalanca/grunt-a11y/pull/19) Thanks to [@srescio](https://github.com/srescio).
 
 0.1.4 Makes `protocolify` and `globby` part of dependencies. [#13](https://github.com/lucalanca/grunt-a11y/pull/13)) Thanks to [@shortdiv](https://github.com/shortdiv)
 
